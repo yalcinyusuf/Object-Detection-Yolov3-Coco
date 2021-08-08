@@ -6,7 +6,7 @@
 import cv2
 import numpy as np
 
-cap = cv2.VideoCapture(r"C:\Users\yusuf\PycharmProjects\YOLO\yolo_pretrained_video\videos\UpTown_Spot.mp4")
+cap = cv2.VideoCapture(r"C:\Users\yusuf\PycharmProjects\YOLO\yolo_pretrained_video\videos\people.mp4")
 #cap = cv2.VideoCapture(0)
 
 while True:
@@ -19,8 +19,7 @@ while True:
     frame_height = frame.shape[0]
 
     frame_blob = cv2.dnn.blobFromImage(frame, 1 / 255, (416, 416), swapRB=True, crop=False)
-    labels = ["Spot | Boston Dynamics"]
-    """
+    
     labels = ["person","bicycle","car","motorcycle","airplane","bus","train","truck","boat",
           "trafficlight","firehydrant","stopsign","parkingmeter","bench","bird","cat",
           "dog","horse","sheep","cow","elephant","bear","zebra","giraffe","backpack",
@@ -31,14 +30,13 @@ while True:
           "sofa","pottedplant","bed","diningtable","toilet","tvmonitor","laptop","mouse",
           "remote","keyboard","cellphone","microwave","oven","toaster","sink","refrigerator",
           "book","clock","vase","scissors","teddybear","hairdrier","toothbrush"]
-    """
+    
     colors = ["0,0,255", "0,0,255", "255,0,0", "255,255,0", "0,255,0"]
     colors = [np.array(color.split(",")).astype("int") for color in colors]
     colors = np.array(colors)
     colors = np.tile(colors, (18, 1))
 
-    #model = cv2.dnn.readNetFromDarknet(r"C:\Users\yusuf\PycharmProjects\YOLO\pretrained_model\yolov3.cfg",r"C:\Users\yusuf\PycharmProjects\YOLO\pretrained_model\yolov3.weights")
-    model = cv2.dnn.readNetFromDarknet(r"C:\Users\yusuf\PycharmProjects\YOLO\spot_pretrained_model\spot_yolov4.cfg",r"C:\Users\yusuf\PycharmProjects\YOLO\spot_pretrained_model\spot_yolov4_last.weights")
+    model = cv2.dnn.readNetFromDarknet(r"C:\Users\yusuf\PycharmProjects\YOLO\pretrained_model\yolov3.cfg",r"C:\Users\yusuf\PycharmProjects\YOLO\pretrained_model\yolov3.weights")
     layers = model.getLayerNames()
     output_layer = [layers[layer[0] - 1] for layer in model.getUnconnectedOutLayers()]
 
