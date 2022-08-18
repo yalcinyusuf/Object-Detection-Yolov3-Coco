@@ -1,4 +1,5 @@
 # Object-Detection-Yolov3-Coco
+Object detection with the Yolov3 algorithm
 
 Data
 
